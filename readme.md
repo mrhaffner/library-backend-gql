@@ -1,0 +1,1 @@
+This is for the Library Backend assignment using GraphQL from the Full Stack Open coursework
