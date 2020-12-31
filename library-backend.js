@@ -181,16 +181,16 @@ const resolvers = {
         } 
     },
     Author: {
-        bookCount: root => {
-          return Book.find({ name: root.name }).length
-          // books.filter(book => book.author === root.name).length
+        bookCount: async root => {
+          const books = await Book.find({}).populate('author')
+          return books.filter(book => book.author.name === root.name).length
         },
     },
     Book: {
       author: root => {
         return {
-          name: root.name,
-          born: root.born
+          name: root.author.name,
+          born: root.author.born,
         }
       }
     },
